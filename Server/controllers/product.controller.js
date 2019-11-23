@@ -1,5 +1,9 @@
 const Product = require('../models/product.model');
+const Account = require('../models/account.model');
 const path = require('path');
+const jwt = require("express-jwt");
+const Comment = require('../models/comment.model');
+
 
 //Simple version, without validation or sanitation
 exports.load = function (req, res) {
@@ -13,15 +17,25 @@ exports.product_display = function (req, res) {
         res.json(test)
     });
 };
+
+//search by name
+exports.product_search = function (req, res) {
+    Product.find( { name: req.body.Name }, function (err, product){
+        if(err)
+            res.send(err);
+        console.log(product);
+        res.json(product);
+    } )
+}
 //create new product
 exports.product_create = function (req, res) {
     let product = new Product(
         {
             name: req.body.name,
-            quantity:  req.body.quantity,
-            due: req.body.due,
-            cnName: req.body.cnName,
-            type: req.body.type
+            album: req.body.album,
+            artist: req.body.artist,
+            rate: 0,
+            reviews: []
         }
     );
 
@@ -37,7 +51,7 @@ exports.product_create = function (req, res) {
 exports.product_details = function (req, res) {
     Product.findById(req.params.id, function (err, product) {
         if (err)
-            return next(err);
+            console.log(err)
         res.send(product);
     })
 };
@@ -50,6 +64,46 @@ exports.product_update = function (req, res) {
     });
 };
 
+//product add comment:
+exports.product_comment = function (req, res){
+    Product.findByIdAndUpdate(req.params.id,{$push: {"reviews": {
+        user: req.body.user, 
+        date: req.body.date,
+        comment: req.body.comment,
+        rate: req.body.rate
+    }
+    
+    }}, function (err, product){
+        if (err) 
+            res.json({
+                type: false,
+                error: err
+            });
+        /*//product founud, then
+        let comment = new Comment ({
+            user: req.body.user,
+            rate: req.body.rate,
+            date: req.body.date,
+            comment: req.body.comment
+        });
+        comment.save(product.reviews, function(err){
+            if(err)
+            console.log(err);
+            
+            else  
+             res.json({
+            type: true
+        })
+        });*/
+       
+    });
+    Product.findByIdAndUpdate(req.params.id, {
+        rate: req.body.totalRate
+    }, function(err, product) {
+        
+    })
+}
+
 //product delete
 exports.product_delete = function (req, res) {
     Product.findByIdAndRemove(req.params.id, function (err) {
@@ -57,3 +111,5 @@ exports.product_delete = function (req, res) {
         res.send('Deleted successfully!');
     })
 };
+
+

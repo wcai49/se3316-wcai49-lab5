@@ -4,7 +4,11 @@ const bodyParser = require('body-parser');
 const path = require('path');
 
 const route = require('./routers/product.route'); // Imports routes for the products
+const routeAccount = require("./routers/account.route");
 const app = express();
+
+const morgan = require("morgan");
+
 
 // Set up mongoose connection
 const mongoose = require('mongoose');
@@ -16,11 +20,20 @@ let db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 
+
+
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.urlencoded({extended: true}));
+
+
+
 app.use('/api', route);
+app.use('/account', routeAccount);
 app.use(express.static(path.join(__dirname, 'public')));
 let port = 8081;
+process.on('uncaughtException', function(err) {
+    console.log(err);
+});
 app.listen(port, () => {
     console.log('Server is up and running on port numner ' + port);
 });

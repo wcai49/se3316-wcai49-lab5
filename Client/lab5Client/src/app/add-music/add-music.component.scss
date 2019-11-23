@@ -1,0 +1,30 @@
+.HeaderFont {
+    font-size: 24px;
+    font-weight: bold;
+}
+.fieldHeader {
+    font-size: 20px;
+    font-weight: bold;
+    margin-left: 60px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.newMusicContainer {
+    display: grid;
+    grid-template-columns: 0.4fr 0.6fr;
+    grid-template-rows: 50px 50px 50px;
+    background-color: #f6f6f8;
+    
+    width: 80%;
+    margin: 0 auto;
+}
+
+input {
+    display: inline;
+    width: 250px;
+    height: 30px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    
+}

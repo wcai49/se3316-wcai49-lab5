@@ -1,0 +1,59 @@
+<body>
+    <hr>
+    <input class='searchInput' id='searchInput'><button class='searchBtn' (click)=search()>GO</button>
+    <div class='itemsList'>
+        <ul *ngIf='items'>
+            <li *ngFor="let item of items">
+                <img src="../assets/musicImg.png" (click)=getSongDetails(item._id)>
+                <p class='name' (click)=getSongDetails(item._id)>{{ item.name}}</p>
+                <p class='rate'>Rate: {{ item.rate}}</p>
+                <p class='popularity'> {{ item.reviews.length}} people reviewed</p>
+            </li>
+        </ul>
+</div>
+
+<div *ngIf='details'>
+    <p class='name'>Song Name: {{details.name}}</p>
+    <p class='album'>Album: {{details.album}}</p>
+    <p class='artist'>Presented by: {{details.artist}}</p>
+    <p class='rate'>Rate: {{details.rate}}</p>
+            
+    <ul *ngIf='reviews'>
+        <li *ngFor='let review of reviews' class='details'>
+            <div class='userImg'>
+                <img src="../assets/userImg.png">
+                <p class='username'> {{review.user}}</p>
+            </div>
+            <div class='detailReview'>
+                <p class='comment'>{{review.comment}}</p>
+                <p class='userrate'>Rate: {{review.rate}}</p>
+                <p class='date'> {{review.date.slice(0,10)}}</p>
+            </div>
+        </li>
+    </ul>
+    <div *ngIf='reviews == false'>
+        <span>No comment so far.</span>
+    </div>
+    <br>
+    <div *ngIf='commentShow' class='commentShow'>
+        <span>Write your comment to the song.</span>
+        <textarea class='commentInput' id='commentContent'></textarea>
+        <br>
+        <div class='bottomArea'>
+        Rate: <select id='rateContent'>
+            <option value=1>1</option>
+            <option value=2>2</option>
+            <option value=3>3</option>
+            <option value=4>4</option>
+            <option value=5>5</option>
+            
+        </select>
+        <input type='date' class='dateInput'name='date' id='dateContent'/>
+        <button class='confirmBtn' (click)=submit()>Submit</button>
+        </div>
+    </div>
+    
+    <button class='confirmBtn'(click)=goBack()>Return </button>
+
+</div>
+</body>
