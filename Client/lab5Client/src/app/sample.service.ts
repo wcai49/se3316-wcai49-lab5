@@ -68,4 +68,45 @@ export class SampleService {
     return this.http.get('/account/users');
   }
   
+  //give Privilege
+  givePrivilege(id){
+    return this.http.put('/account/giveP', id, {
+      observe: 'response'
+    });
+  }
+  
+  //cancel Privilege
+  cancelPrivilege(id){
+    return this.http.put('/account/cancelP', id, {
+      observe: 'response'
+    });
+  }
+  
+  //give Privilege
+  setDeactivated(id){
+    return this.http.put('/account/setDe', id, {
+      observe: 'response'
+    });
+  }
+  
+  //cancel Privilege
+  cancelDeactivated(id){
+    return this.http.put('/account/cancelDe', id, {
+      observe: 'response'
+    });
+  }
+  
+  //set hide songs
+  setHide(id){
+    return this.http.put('/api/setHide', id, {
+      observe: 'response'
+    });
+  }
+  
+  //cancel Privilege
+  cancelHide(id){
+    return this.http.put('/api/cancelHide', id, {
+      observe: 'response'
+    });
+  }
 }

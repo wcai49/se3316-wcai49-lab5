@@ -18,5 +18,22 @@
     "/account/*": {
         "target": "http://localhost:8081",
         "secure": false
+    },
+    "/account/giveP": {
+        "target": "http://localhost:8081",
+        "secure": false
+    },
+    "/account/cancelP": {
+        "target": "http://localhost:8081",
+        "secure": false
+    },
+    "/account/setDe": {
+        "target": "http://localhost:8081",
+        "secure": false
+    },
+    "/account/cancelDe": {
+        "target": "http://localhost:8081",
+        "secure": false
     }
+    
 }

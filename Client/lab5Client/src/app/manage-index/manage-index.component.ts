@@ -6,10 +6,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./manage-index.component.scss']
 })
 export class ManageIndexComponent implements OnInit {
-
+  isSuper: Object;
   constructor() { }
 
   ngOnInit() {
+    if(localStorage.loginStatus=='SuperManager')
+      this.isSuper = {
+        status: 'display'
+      };
+    else
+      this.isSuper = null;
   }
 
 }

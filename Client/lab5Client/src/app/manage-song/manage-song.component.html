@@ -1,0 +1,16 @@
+<body>
+    <div class='songContainer'>
+        <ul *ngIf='songs' style='list-style:none;'>
+            <li *ngFor='let song of songs' class='songList'>
+                <img src="../assets/musicImg.png">
+                <div class='songInfo'>
+                    <p>{{song.name}}</p>
+                </div>
+                <div class='manageBtns'>
+                    <button *ngIf='song.hidden == false' (click)=setHide(song._id)>Hide</button>
+                    <button *ngIf='song.hidden == true' (click)=cancelHide(song._id)>Cancel Hide</button>
+                </div>
+            </li>
+        </ul>
+    </div>
+</body>

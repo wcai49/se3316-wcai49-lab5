@@ -7,8 +7,12 @@
                     <p>{{user.username}}</p>
                 </div>
                 <div class='manageBtns'>
-                    <button *ngIf='user.manager==false' (click)=givePrivilege()>Give Privilege</button>
-                    <button *ngIf='user.manager==true && user.superManager == false' (click)=cancelPrivilege()>Cancel Privilege</button>
+                    <div class='detectGivePrivilegeAuth' *ngIf='isSuperManager'>
+                    <button *ngIf="user.superManager== false && user.manager==false" (click)=givePrivilege(user._id)>Give Privilege</button>
+                    <button *ngIf='user.superManager== false && user.manager==true' (click)=cancelPrivilege(user._id)>Cancel Privilege</button>
+                    </div>
+                    <button *ngIf='user.deactivated == false && user.superManager == false' (click)=setDeactivated(user._id)>Deactivate</button>
+                    <button *ngIf='user.deactivated == true && user.superManager == false' (click)=cancelDeactivated(user._id)>Cancel Deactivate</button>
                 </div>
             </li>
         </ul>

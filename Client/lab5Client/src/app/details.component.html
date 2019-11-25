@@ -4,11 +4,14 @@
     <div class='itemsList'>
         <ul *ngIf='items'>
             <li *ngFor="let item of items">
+                <div *ngIf='item.hidden == false'>
                 <img src="../assets/musicImg.png" (click)=getSongDetails(item._id)>
                 <p class='name' (click)=getSongDetails(item._id)>{{ item.name}}</p>
                 <p class='rate'>Rate: {{ item.rate}}</p>
                 <p class='popularity'> {{ item.reviews.length}} people reviewed</p>
+                </div>
             </li>
+            
         </ul>
 </div>
 

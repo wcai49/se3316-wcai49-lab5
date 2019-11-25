@@ -21,7 +21,14 @@ exports.account_Auth = function(req, res) {
             });
         }
         else {
+            
             if(user){
+                if(user.deactivated == true){
+                    res.json({
+                        type: 'deactivated',
+                        data: user,
+                    })
+                }
                 if(passwordHash.verify(req.body.password, user.password)){
                     
                     if(user.manager == true)
@@ -90,7 +97,9 @@ exports.account_SignUp = function(req, res){
                     username: req.body.username,
                     password: passwordHash.generate(req.body.password),
                     token: '',
-                    manager: false
+                    manager: false,
+                    superManager: false,
+                    deactivated: false
                 }
             );
             let this_token = jwt.sign({account}, 'rubickIsGod', {expiresIn: '3h'});
@@ -109,4 +118,40 @@ exports.account_SignUp = function(req, res){
             }
         }
     });
-};
+}
+
+exports.givePrivilege = function (req, res){
+    Account.findByIdAndUpdate(req.body.id, {
+        manager: true
+    }, function(err, product) {
+        if(err)
+            console.log(err);
+    })
+}
+
+exports.cancelPrivilege = function (req, res){
+    Account.findByIdAndUpdate(req.body.id, {
+        manager: false
+    }, function(err, product) {
+        if(err)
+            console.log(err);
+    })
+}
+
+exports.setDeactivated = function (req, res){
+    Account.findByIdAndUpdate(req.body.id, {
+        deactivated: true
+    }, function(err, product) {
+        if(err)
+            console.log(err);
+    })
+}
+
+exports.cancelDeactivated = function (req, res){
+    Account.findByIdAndUpdate(req.body.id, {
+        deactivated: false
+    }, function(err, product) {
+        if(err)
+            console.log(err);
+    })
+}

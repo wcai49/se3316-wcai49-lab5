@@ -10,8 +10,9 @@ import {Router} from '@angular/router';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-
+  
   account: Object;
+  deactivatedMsg: String;
   constructor(private _http: SampleService, private _display: DisplayService, private router: Router) {
     
   }
@@ -29,6 +30,12 @@ export class LoginComponent implements OnInit {
           data => {
           console.log("POST has been sent ", data);
           console.log("POST has been sent ", data.body["type"]);
+          if(data.body["type"] == 'deactivated'){
+            this.deactivatedMsg = 'Sorry, account is deactivated, please contact the Manager';
+          }
+          else{
+            this.deactivatedMsg = null;
+          }
           if(data.body["type"]){
             localStorage.setItem('token', data.body["token"].toString());
             /*this._display.loginAuthen(data.body["type"]);

@@ -13,6 +13,11 @@ export class HomeComponent implements OnInit {
   
   ngOnInit() {
       this._http.getData().subscribe((data:[]) => {
+      for(let i= 0; i < data.length; i++){
+        if(data[i]["hidden"] == true){
+          data.splice(i, 1);
+        }
+      }
       data.sort(this.compare('reviews'));
       this.items = data;
       console.log(data);

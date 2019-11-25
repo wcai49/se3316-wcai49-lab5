@@ -35,7 +35,8 @@ exports.product_create = function (req, res) {
             album: req.body.album,
             artist: req.body.artist,
             rate: 0,
-            reviews: []
+            reviews: [],
+            hidden: false
         }
     );
 
@@ -59,11 +60,29 @@ exports.product_details = function (req, res) {
 //product update
 exports.product_update = function (req, res) {
     Product.findByIdAndUpdate(req.params.id, {$set: req.body}, function (err, product) {
-        if (err) return next(err);
+        if (err) return console.log(err);
         res.send('Product udpated.');
     });
 };
 
+//product hide
+exports.setHide = function (req, res){
+    Product.findByIdAndUpdate(req.body.id, {
+        hidden: true
+    }, function(err, product) {
+        if(err)
+            console.log(err);
+    })
+}
+//product cancel hide
+exports.cancelHide = function (req, res){
+    Product.findByIdAndUpdate(req.body.id, {
+        hidden: false
+    }, function(err, product) {
+        if(err)
+            console.log(err);
+    })
+}
 //product add comment:
 exports.product_comment = function (req, res){
     Product.findByIdAndUpdate(req.params.id,{$push: {"reviews": {

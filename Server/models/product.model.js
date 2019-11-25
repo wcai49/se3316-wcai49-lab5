@@ -6,7 +6,8 @@ let ProductSchema = new Schema({
     album: {type: String, required: true, max: 100},
     artist: {type: String, required: true, max: 100},
     rate: {type: String, required: false, max: 100},
-    reviews: {type: Array, required: false, max: 100}
+    reviews: {type: Array, required: false, max: 100},
+    hidden: {type: Boolean, required: true, max: 100}
 });
 
 

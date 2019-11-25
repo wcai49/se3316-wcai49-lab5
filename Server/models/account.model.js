@@ -7,7 +7,8 @@ let AccountSchema = new Schema({
     password: {type: String, required: true, max: 100},
     token: {type: String, required: true, max: 100},
     manager: {type: Boolean, required: true, max: 100},
-    superManager: {type: Boolean, required: false, max:100}
+    superManager: {type: Boolean, required: false, max:100},
+    deactivated: {type: Boolean, required: true, max:100}
 });
 
 // Export the model

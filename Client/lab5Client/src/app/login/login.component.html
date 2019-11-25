@@ -2,6 +2,7 @@
     <div class="containerLogin">
         <p class="loginTitle">Login With your Rubick Cloud Music Account!</p>
         <hr>
+        <p *ngIf='deactivatedMsg'>{{deactivatedMsg}}</p>
     <div class="loginInfo">
         <p>Username</p>
         <input type="text" name="username" id="username"/>
