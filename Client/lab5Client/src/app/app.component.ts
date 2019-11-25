@@ -33,7 +33,7 @@ export class AppComponent {
       };
       this.username = localStorage["user"];
     }
-    if(localStorage['loginStatus']== 'manager')
+    if(localStorage['loginStatus']== 'manager' || localStorage['loginStatus']=='SuperManager')
       this.managerShow = {
         status: 'show'
       }

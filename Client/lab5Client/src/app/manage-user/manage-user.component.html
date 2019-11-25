@@ -1,1 +1,16 @@
-<p>manage-user works!</p>
+<body>
+    <div class='userContainer'>
+        <ul *ngIf='users' style='list-style:none;'>
+            <li *ngFor='let user of users' class='userList'>
+                <img src="../assets/userImg.png">
+                <div class='userInfo'>
+                    <p>{{user.username}}</p>
+                </div>
+                <div class='manageBtns'>
+                    <button *ngIf='user.manager==false' (click)=givePrivilege()>Give Privilege</button>
+                    <button *ngIf='user.manager==true && user.superManager == false' (click)=cancelPrivilege()>Cancel Privilege</button>
+                </div>
+            </li>
+        </ul>
+    </div>
+</body>

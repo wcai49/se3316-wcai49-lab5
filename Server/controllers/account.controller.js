@@ -24,13 +24,22 @@ exports.account_Auth = function(req, res) {
             if(user){
                 if(passwordHash.verify(req.body.password, user.password)){
                     
-                    if(req.body.username == 'admin')
+                    if(user.manager == true)
                         {
-                    res.json({
-                    type: 'manager',
-                    data: user,
-                    token: user.token
-                });
+                            if(user.superManager){
+                                    res.json({
+                                    type: 'SuperManager',
+                                    data: user,
+                                    token: user.token
+                                });
+                            }
+                            else{
+                                    res.json({
+                                    type: 'manager',
+                                    data: user,
+                                    token: user.token
+                                });
+                            }
                 }
                     else
                     {
@@ -80,7 +89,8 @@ exports.account_SignUp = function(req, res){
                 {
                     username: req.body.username,
                     password: passwordHash.generate(req.body.password),
-                    token: ''
+                    token: '',
+                    manager: false
                 }
             );
             let this_token = jwt.sign({account}, 'rubickIsGod', {expiresIn: '3h'});

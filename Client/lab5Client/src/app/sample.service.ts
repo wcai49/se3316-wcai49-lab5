@@ -62,4 +62,10 @@ export class SampleService {
     });
   }
   
+  
+  //return all the users
+  getUsers(){
+    return this.http.get('/account/users');
+  }
+  
 }

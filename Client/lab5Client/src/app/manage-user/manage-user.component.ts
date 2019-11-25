@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SampleService } from '../sample.service';
 
 @Component({
   selector: 'app-manage-user',
@@ -6,10 +7,22 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./manage-user.component.scss']
 })
 export class ManageUserComponent implements OnInit {
-
-  constructor() { }
+  users: Object;
+  constructor(private _http: SampleService) { }
 
   ngOnInit() {
+    this._http.getUsers().subscribe((data:[]) => {
+      this.users = data;
+      console.log(data);
+    });
+  }
+  
+  givePrivilege(){
+    
+  }
+  
+  cancelPrivilege(){
+    
   }
 
 }

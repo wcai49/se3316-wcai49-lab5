@@ -19,8 +19,8 @@ const routes: Routes = [
   { path: 'detail', component: DetailsComponent},
   { path: 'addMusic', component: AddMusicComponent},
   { path: 'manageIndex', component: ManageIndexComponent},
-  { path: 'manageSongs', component: ManageSongComponent},
-  { path: 'manageUsers', component: ManageUserComponent}
+  { path: 'manageIndex/manageSongs', component: ManageSongComponent},
+  { path: 'manageIndex/manageUsers', component: ManageUserComponent}
   ];
 
 @NgModule({
