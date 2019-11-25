@@ -1,12 +1,13 @@
 <header>
   <div class="container">
     <a href="#" class="logo" routerLink="/" (click)='ngOnInit()'>Rubick Cloud Music</a>
-    <a *ngIf='username'>Hi, {{username}} !</a>
+    <a *ngIf='username' style='margin-left: 200px;'>Hi, {{username}} !</a>
     <nav>
       <ul>
         <li><a href="#" routerLink="/home">Home</a></li>
         <li><a *ngIf='loginShow' href="#" routerLink="/login">Login</a></li>
         <li><a *ngIf='logoutShow' href="#" routerLink='/addMusic'>Add</a></li>
+        <li><a *ngIf='managerShow' href='#'routerLink='/manageIndex'>Manage</a></li>
         <li><a *ngIf='logoutShow' href="#"  (click)='signOut()'>SignOut</a></li>
       </ul>
     </nav>

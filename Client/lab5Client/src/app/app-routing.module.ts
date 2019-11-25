@@ -6,6 +6,9 @@ import { RegisComponent } from './regis/regis.component';
 import { IntroComponent } from './intro/intro.component';
 import { DetailsComponent } from './details.component';
 import { AddMusicComponent } from './add-music/add-music.component';
+import { ManageIndexComponent} from './manage-index/manage-index.component';
+import { ManageSongComponent} from './manage-song/manage-song.component';
+import { ManageUserComponent} from './manage-user/manage-user.component';
 
 
 const routes: Routes = [
@@ -14,7 +17,10 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent},
   { path: 'regis', component: RegisComponent},
   { path: 'detail', component: DetailsComponent},
-  { path: 'addMusic', component: AddMusicComponent}
+  { path: 'addMusic', component: AddMusicComponent},
+  { path: 'manageIndex', component: ManageIndexComponent},
+  { path: 'manageSongs', component: ManageSongComponent},
+  { path: 'manageUsers', component: ManageUserComponent}
   ];
 
 @NgModule({

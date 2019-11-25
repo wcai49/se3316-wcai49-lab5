@@ -12,6 +12,9 @@ import { IntroComponent } from './intro/intro.component';
 import { DetailsComponent } from './details.component';
 import { DisplayService } from './display.service';
 import { AddMusicComponent } from './add-music/add-music.component';
+import { ManageIndexComponent } from './manage-index/manage-index.component';
+import { ManageSongComponent } from './manage-song/manage-song.component';
+import { ManageUserComponent } from './manage-user/manage-user.component';
 
 
 @NgModule({
@@ -23,6 +26,9 @@ import { AddMusicComponent } from './add-music/add-music.component';
     IntroComponent,
     DetailsComponent,
     AddMusicComponent,
+    ManageIndexComponent,
+    ManageSongComponent,
+    ManageUserComponent,
   ],
   imports: [
     BrowserModule,

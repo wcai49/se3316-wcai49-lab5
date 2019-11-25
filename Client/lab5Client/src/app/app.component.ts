@@ -14,11 +14,13 @@ export class AppComponent {
   logoutShow: Object;
   username: String;
   searchName: Object;
+  managerShow: Object;
   constructor(private _display: DisplayService, private _http: SampleService) {
     this.loginShow = {
       status: 'show'
     };
     this.logoutShow = null;
+    this.managerShow = null;
   }
   
   
@@ -31,6 +33,10 @@ export class AppComponent {
       };
       this.username = localStorage["user"];
     }
+    if(localStorage['loginStatus']== 'manager')
+      this.managerShow = {
+        status: 'show'
+      }
       
   }
   
@@ -42,6 +48,7 @@ export class AppComponent {
         status: 'show'
       };
       this.username= null;
+      this.managerShow = null;
     
   }
   

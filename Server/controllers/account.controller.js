@@ -22,14 +22,27 @@ exports.account_Auth = function(req, res) {
         }
         else {
             if(user){
-                if(passwordHash.verify(req.body.password, user.password))
-                {
+                if(passwordHash.verify(req.body.password, user.password)){
+                    
+                    if(req.body.username == 'admin')
+                        {
+                    res.json({
+                    type: 'manager',
+                    data: user,
+                    token: user.token
+                });
+                }
+                    else
+                    {
                     res.json({
                     type: true,
                     data: user,
                     token: user.token
                 });
                 }
+                    
+                }
+                
                 else {
                 res.json({
                     type: false,
