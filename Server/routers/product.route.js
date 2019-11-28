@@ -16,6 +16,10 @@ router.put('/:id/update', product_controller.product_update);
 router.put('/:id/comment', product_controller.product_comment);
 router.put('/setHide', product_controller.setHide);
 router.put('/cancelHide', product_controller.cancelHide);
+router.put('/report', product_controller.product_report);
+router.put('/reportConfirm', product_controller.report_confirm);
+router.put('/cancelReport', product_controller.cancel_report);
+
 
 router.delete('/:id/delete', product_controller.product_delete);
 

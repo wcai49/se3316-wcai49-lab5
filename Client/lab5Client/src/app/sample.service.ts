@@ -109,4 +109,24 @@ export class SampleService {
       observe: 'response'
     });
   }
+  
+  //report the song Copyright
+  report(songId){
+    return this.http.put('/api/report',songId,{
+      observe: 'response'
+    });
+  }
+  
+  reportConfirm(songId){
+    return this.http.put('/api/reportConfirm',songId,{
+      observe: 'response'
+    });
+  }
+  
+  //cancel report
+  cancelReport(songId){
+    return this.http.put('/api/cancelReport', songId, {
+      observe: 'response'
+    });
+  }
 }

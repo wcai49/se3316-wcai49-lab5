@@ -9,6 +9,11 @@ import { AddMusicComponent } from './add-music/add-music.component';
 import { ManageIndexComponent} from './manage-index/manage-index.component';
 import { ManageSongComponent} from './manage-song/manage-song.component';
 import { ManageUserComponent} from './manage-user/manage-user.component';
+import { PolicyComponent} from './policy/policy.component';
+import { DCMAComponent } from './dcma/dcma.component';
+import { ReportComponent } from './report/report.component';
+import { ManageReportComponent} from './manage-report/manage-report.component';
+
 
 
 const routes: Routes = [
@@ -20,7 +25,11 @@ const routes: Routes = [
   { path: 'addMusic', component: AddMusicComponent},
   { path: 'manageIndex', component: ManageIndexComponent},
   { path: 'manageIndex/manageSongs', component: ManageSongComponent},
-  { path: 'manageIndex/manageUsers', component: ManageUserComponent}
+  { path: 'manageIndex/manageUsers', component: ManageUserComponent},
+  { path: 'policy', component: PolicyComponent},
+  { path: 'DCMA', component: DCMAComponent},
+  { path: 'report', component: ReportComponent},
+  { path: 'manageIndex/manageReports', component:ManageReportComponent}
   ];
 
 @NgModule({

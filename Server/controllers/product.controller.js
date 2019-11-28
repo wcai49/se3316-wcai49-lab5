@@ -36,7 +36,8 @@ exports.product_create = function (req, res) {
             artist: req.body.artist,
             rate: 0,
             reviews: [],
-            hidden: false
+            hidden: false,
+            reported: false
         }
     );
 
@@ -130,5 +131,38 @@ exports.product_delete = function (req, res) {
         res.send('Deleted successfully!');
     })
 };
+
+
+//product Report
+exports.product_report = function (req, res){
+    Product.findByIdAndUpdate(req.body.id, {
+        reported: true
+    }, function(err, product) {
+        if(err)
+            console.log(err);
+    })
+}
+
+
+//confirm Report
+exports.report_confirm = function (req, res){
+    Product.findByIdAndUpdate(req.body.id, {
+        hidden: true,
+        reported: true
+    }, function(err, product) {
+        if(err)
+            console.log(err);
+    })
+}
+//product cancel report
+exports.cancel_report = function (req, res){
+    Product.findByIdAndUpdate(req.body.id, {
+        hidden: false,
+        reported: false
+    }, function(err, product) {
+        if(err)
+            console.log(err);
+    })
+}
 
 

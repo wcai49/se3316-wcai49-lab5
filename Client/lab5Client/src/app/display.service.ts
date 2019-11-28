@@ -4,10 +4,7 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class DisplayService {
   username: String;
-  constructor() { 
-    
-    
-  }
+  constructor() {}
   
   /*
   * This function receives a callback funtion to send back the aynchronous response from the server.

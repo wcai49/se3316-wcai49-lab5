@@ -15,6 +15,10 @@ import { AddMusicComponent } from './add-music/add-music.component';
 import { ManageIndexComponent } from './manage-index/manage-index.component';
 import { ManageSongComponent } from './manage-song/manage-song.component';
 import { ManageUserComponent } from './manage-user/manage-user.component';
+import { PolicyComponent } from './policy/policy.component';
+import { DCMAComponent } from './dcma/dcma.component';
+import { ReportComponent } from './report/report.component';
+import { ManageReportComponent } from './manage-report/manage-report.component';
 
 
 @NgModule({
@@ -29,6 +33,10 @@ import { ManageUserComponent } from './manage-user/manage-user.component';
     ManageIndexComponent,
     ManageSongComponent,
     ManageUserComponent,
+    PolicyComponent,
+    DCMAComponent,
+    ReportComponent,
+    ManageReportComponent,
   ],
   imports: [
     BrowserModule,

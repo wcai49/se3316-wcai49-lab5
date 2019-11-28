@@ -1,0 +1,21 @@
+<body>
+    <div class='container'>
+        <p>Report a TORT</p>
+        <ol>
+            <li>Submit a report if you found your IP, idea, work etc., has been stolen by someone else on this website</li>
+            <li>Choose the existing music that you need to complain about. Proivde your own declearations</li>
+            <li>Your report message will be checked and reviewed within 3 days.</li>
+        </ol>
+    </div>
+    <div class='itemsList'>
+        <ul *ngIf='items'>
+            <li *ngFor="let item of items">
+                <div *ngIf='item.hidden == false'>
+                <img src="../assets/musicImg.png">
+                <p class='name'>{{ item.name}}</p>
+                <button (click)=report(item._id)>Report</button>
+                </div>
+            </li>
+        </ul>
+</div>
+</body>
