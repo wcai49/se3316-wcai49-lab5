@@ -1,6 +1,7 @@
 <body>
     <div class="containerLogin">
         <p class="loginTitle">Login With your Rubick Cloud Music Account!</p>
+        <p *ngIf='emailInvalid' style='color: red'>{{emailInvalid}}</p>
         <hr>
         <p *ngIf='deactivatedMsg'>{{deactivatedMsg}}</p>
     <div class="loginInfo">

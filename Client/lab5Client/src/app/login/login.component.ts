@@ -10,7 +10,8 @@ import {Router} from '@angular/router';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  
+  emailInput: string;
+  emailInvalid: string;
   account: Object;
   deactivatedMsg: String;
   constructor(private _http: SampleService, private _display: DisplayService, private router: Router) {
@@ -18,9 +19,16 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
+   this.emailInvalid = null;
   }
   
   loginPost(){
+    this.emailInput = (<HTMLInputElement>document.getElementById('username')).value;
+    let regExp = /\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/;
+    if(!regExp.test(this.emailInput)){
+      this.emailInvalid = 'Invalid email! Please check your username.'
+    }
+    
     this.account = {
         username: (<HTMLInputElement>document.getElementById('username')).value,
         password: (<HTMLInputElement>document.getElementById('password')).value,
