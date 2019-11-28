@@ -9,12 +9,20 @@ import { Router } from '@angular/router';
 })
 export class RegisComponent implements OnInit {
   account: Object;
+  emailInput: string;
+  emailInvalid: string;
   constructor( private _http: SampleService, private router: Router) { }
 
   ngOnInit() {
   }
   
   signUp(){
+    this.emailInput = (<HTMLInputElement>document.getElementById('username')).value;
+    let regExp = /\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/;
+    if(!regExp.test(this.emailInput)){
+      this.emailInvalid = 'Invalid email! Please check your username.';
+    }
+    
     this.account = {
       username: (<HTMLInputElement>document.getElementById('username')).value,
       password: (<HTMLInputElement>document.getElementById('password')).value

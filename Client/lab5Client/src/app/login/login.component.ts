@@ -25,8 +25,9 @@ export class LoginComponent implements OnInit {
   loginPost(){
     this.emailInput = (<HTMLInputElement>document.getElementById('username')).value;
     let regExp = /\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/;
-    if(!regExp.test(this.emailInput)){
-      this.emailInvalid = 'Invalid email! Please check your username.'
+    if(!regExp.test(this.emailInput))
+    {
+      this.emailInvalid = 'Invalid email! Please check your username.';
     }
     
     this.account = {
@@ -54,9 +55,5 @@ export class LoginComponent implements OnInit {
           }
           },
           error =>{}
-  )
-  }
-  
-
-  
+  )}
 }
