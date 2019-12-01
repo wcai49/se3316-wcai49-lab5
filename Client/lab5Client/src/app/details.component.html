@@ -1,7 +1,16 @@
 <body>
     <div class='reportBtn'routerLink='/report'>REPORT TORT</div>
     <hr>
-    <input class='searchInput' id='searchInput'><button class='searchBtn' (click)=search()>GO</button>
+    <input class='searchInput' id='searchInput'><button class='searchBtn' (click)=search()>GO</button> 
+    
+    <div class="sortArea" style="margin-left: 30px;">
+        <p style="text-align: left">Sort By: </p> 
+    
+        <button class='searchBtn' (click)=changeSort(1)>#Comment</button>
+        <button class='searchBtn' (click)=changeSort(2)>Rate</button>
+        <button class='searchBtn' (click)=changeSort(3)>Name</button>
+    </div>
+    
     <div class='itemsList'>
         <ul *ngIf='items'>
             <li *ngFor="let item of items">
@@ -19,6 +28,9 @@
     <p class='name'>Song Name: {{details.name}}</p>
     <p class='album'>Album: {{details.album}}</p>
     <p class='artist'>Presented by: {{details.artist}}</p>
+    <p class='year'>Published Year: {{details.year.slice(0,10)}}</p>
+    <p class='track'>Track: {{details.track}}</p>
+    <p class='genre'>Genre: {{details.genre}}</p>
     <p class='rate'>Rate: {{details.rate}}</p>
             
     <ul *ngIf='reviews'>

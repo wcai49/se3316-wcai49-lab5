@@ -34,11 +34,13 @@ exports.account_Auth = function(req, res) {
                     if(user.manager == true)
                         {
                             if(user.superManager){
+                               
                                     res.json({
                                     type: 'SuperManager',
                                     data: user,
                                     token: user.token
                                 });
+                                 console.log(res);
                             }
                             else{
                                     res.json({
@@ -77,7 +79,7 @@ exports.account_Auth = function(req, res) {
 };
 
 exports.account_SignUp = function(req, res){
-    Account.findOne({username: req.body.username,  password: passwordHash.generate(req.body.password)}, function(err, user){
+    Account.findOne({username: req.body.username}, function(err, user){
         if (err) {
             res.json({
                 type: false,

@@ -14,7 +14,10 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
       this._http.getData().subscribe((data:[]) => {
         let itemArray = [];
-      for(let i= 0; i < data.length; i++){
+        let songNum = 10;
+        if(data.length < songNum)
+          songNum = data.length;
+      for(let i= 0; i < songNum; i++){
         if(data[i]["hidden"] == false){
           itemArray.push(data[i]);
         }

@@ -11,6 +11,7 @@ export class RegisComponent implements OnInit {
   account: Object;
   emailInput: string;
   emailInvalid: string;
+  errorMsg: string;
   constructor( private _http: SampleService, private router: Router) { }
 
   ngOnInit() {
@@ -31,13 +32,17 @@ export class RegisComponent implements OnInit {
           data => {
           console.log("POST has been sent ", data);
           console.log("POST has been sent ", data.body["type"]);
-          if(data.body["type"]){
+          if(data.body["type"] == true){
             localStorage.setItem('token', data.body["token"].toString());
             /*this._display.loginAuthen(data.body["type"]);
             this._display.storeUser(data.body["data"].username);*/
             localStorage.setItem('user', data.body["data"].username);
             localStorage.setItem('loginStatus', data.body["type"]);
             setTimeout( ()=>{this.router.navigateByUrl('/login')}, 3000);
+          }
+          
+          else if(data.body["type"] == false){
+            this.errorMsg = data.body['data'];
           }
           },
           error =>{}
